@@ -1,0 +1,173 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sign Up For Beta Form</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(253, 101, 133, 1) 0%,
+    rgba(255, 211, 165, 1) 90%
+  );
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 400px;
+  height: 30em;
+  background-color: #ffffff;
+  padding: 10px 30px;
+}
+
+.card_title {
+  text-align: center;
+  padding: 10px;
+}
+
+.card_title h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.form input {
+  margin: 10px 0;
+  width: 100%;
+  background-color: #e2e2e2;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+}
+
+.form button {
+  background-color: #4796ff;
+  color: #ffffff;
+  font-size: 16px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+  width: 100%;
+}
+
+.card_terms {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.card_terms input[type="checkbox"] {
+  background-color: #e2e2e2;
+}
+
+.card_terms span {
+  margin: 5px;
+  font-size: 13px;
+}
+
+.card a {
+  color: #4796ff;
+  text-decoration: none;
+}
+
+</style>
+  </head>
+  <body>
+	   <div class="container">
+      <div class="card">
+        <div class="card_title">
+          <h1>Регистрация</h1>
+          <span>Зарегистрируйтесь и получите промокод на скидку в 10%, а также промокод на 20% каждый день рождения!</span>
+        </div>
+        <div class="form">
+        <form action="/register" method="post">
+          <input type="text" name="username" id="username" placeholder="Имя" />
+          <input type="email" name="email" placeholder="Почта" id="email" />
+          <input type="password" name="password" placeholder="Пароль" id="password" />
+	     <div class="form-group">
+            <input id="dobUk" name="dobUk" placeholder = "Дата рождения, например 30/12/2000"class="form-control input-lg js-date--west" type="text">
+
+          </div>
+          <button>Зарегистрироваться</button>
+          </form>
+        </div>
+        <div class="card_terms">
+        </div>
+      </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formvalidation/0.6.1/js/formValidation.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formvalidation/0.6.1/css/formValidation.min.css"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
+    <script>
+	    $(document).ready(function() {
+  $('.js-date--west').mask('00/00/0000');
+  $('.js-date--europe').mask('00-00-0000')
+  // Validation
+  $('#js-form').formValidation({
+    framework: 'bootstrap',
+    icon: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+      dobUk: {
+        trigger: 'blur',
+        validators: {
+          notEmpty: {
+            message: 'Your date of birth is required'
+          },
+          date: {
+            format: 'DD/MM/YYYY',
+            message: 'Your date of birth is not valid'
+          }
+        }
+      },
+      dobEs: {
+        trigger: 'blur',
+        validators: {
+          notEmpty: {
+            message: 'Se requiere su fecha de nacimiento'
+          },
+          date: {
+            format: 'DD-MM-YYYY',
+            message: 'Su fecha de nacimiento no es válida'
+          }
+        }
+      },
+      dobUs: {
+        trigger: 'blur',
+        validators: {
+          notEmpty: {
+            message: 'Your date of birth is required'
+          },
+          date: {
+            format: 'MM/DD/YYYY',
+            message: 'Your date of birth is not valid'
+          }
+        }
+      }
+    }
+  });
+});
+    </script>
+  </body>
+</html>
